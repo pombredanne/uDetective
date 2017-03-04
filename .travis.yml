@@ -1,3 +1,5 @@
+before_script: cd udetectiveservlet
+
 language: java
 jdk:
   - oraclejdk8
