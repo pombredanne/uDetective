@@ -13,7 +13,7 @@ public class ServiceNowRetrieve implements IRetriever {
     
     private IInputDS inputDS = null;
     
-    public void ServiceNowRetrieve(IInputDS inputDS) {
+    public void serviceNowRetrieve(IInputDS inputDS) {
         this.inputDS = inputDS;
     }
     

@@ -45,13 +45,4 @@ public class ServiceNowTicket extends AbstractModel
     public Date getDate() {
         return this.date;
     }
-        
-
-    @Override
-    public String toString() {
-        return getId()         + TO_STRING_DELIMITER + 
-               getSubject()       + TO_STRING_DELIMITER + 
-               getBody()        + TO_STRING_DELIMITER +
-               getDate();
-    }
 }

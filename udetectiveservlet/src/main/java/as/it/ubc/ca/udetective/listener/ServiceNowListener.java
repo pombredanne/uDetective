@@ -3,15 +3,11 @@ package as.it.ubc.ca.udetective.listener;
 import as.it.ubc.ca.udetective.job.ServiceNowJob;
 import static org.quartz.JobBuilder.newJob;
 import static org.quartz.TriggerBuilder.newTrigger;
-
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
-
-import org.quartz.CronScheduleBuilder;
 import org.quartz.JobDetail;
 import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
-import org.quartz.SimpleScheduleBuilder;
 import static org.quartz.SimpleScheduleBuilder.simpleSchedule;
 import org.quartz.Trigger;
 import org.quartz.impl.StdSchedulerFactory;
@@ -22,7 +18,7 @@ import org.quartz.impl.StdSchedulerFactory;
  * @author Armenak Grigoryan
  */
 public class ServiceNowListener implements ServletContextListener {
-        Scheduler scheduler = null;
+        private Scheduler scheduler = null;
 
         @Override
         public void contextInitialized(ServletContextEvent servletContext) {

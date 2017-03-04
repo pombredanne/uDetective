@@ -50,25 +50,7 @@ public class Utilities {
         }         
         return true;
     }
-     
-    public static String transformYesNoToString(String booleanStr ) {
-        
-        log.debug("booleanStr="+booleanStr);
-        
-        String ret = "";
-        if (booleanStr == null || booleanStr.trim().equals("")) {
-            ret = "";
-        } else if (booleanStr.equals("Yes")) {
-            ret = "Y";
-        } else if (booleanStr.equals("No")) {
-            ret = "N";
-        } else {
-            ret = "";
-        }
-        
-        return ret;
-    }
-    
+         
     public static boolean isEmptyString(String str) {
         boolean ret = false;
 
