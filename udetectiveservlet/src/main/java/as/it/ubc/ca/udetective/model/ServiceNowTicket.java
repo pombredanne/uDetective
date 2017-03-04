@@ -11,7 +11,11 @@ public class ServiceNowTicket extends AbstractModel
     private String body;
     private Date   date;
     
-    public ServiceNowTicket() {
+    public ServiceNowTicket(int id, String subject, String body, Date date) {
+        this.id      = id;
+        this.subject = subject;
+        this.body    = body;
+        this.date    = date;
     }
 
     public void setId(int id) {

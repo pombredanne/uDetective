@@ -4,9 +4,5 @@ import java.io.Serializable;
 
 public abstract class AbstractModel implements Serializable
 {
-    private static final long serialVersionUID = 1L;
-    	        
-    // Empty constructor
-    public AbstractModel() {
-    }
+    private static final long serialVersionUID = 1L;    	        
 }
