@@ -5,24 +5,24 @@
 package as.it.ubc.ca.udetective;
 
 
-public class MMSException extends Exception
+public class UDetectiveException extends Exception
 {
     private static final long serialVersionUID = 1L;
-    public MMSException()
+    public UDetectiveException()
     {
     }
     
-    public MMSException(String message)
+    public UDetectiveException(String message)
     {
         super(message);
     }    
     
-    public MMSException(Throwable cause)
+    public UDetectiveException(Throwable cause)
     {
         super(cause);
     }    
     
-    public MMSException(String message, Throwable cause)
+    public UDetectiveException(String message, Throwable cause)
     {
         super(message, cause);
     }    
