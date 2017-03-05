@@ -1,5 +1,7 @@
 package as.it.ubc.ca.udetective.dataretriever;
 
+import java.io.IOException;
+
 /**
  * Public interface which all data retrievers must implement
  * 
@@ -7,6 +9,6 @@ package as.it.ubc.ca.udetective.dataretriever;
  */
 public interface IRetriever {
     
-    public void retrieve();
+    public void retrieve() throws IOException ;
             
 }

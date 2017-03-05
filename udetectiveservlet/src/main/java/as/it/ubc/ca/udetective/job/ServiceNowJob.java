@@ -2,6 +2,7 @@ package as.it.ubc.ca.udetective.job;
 
 import as.it.ubc.ca.udetective.dataretriever.IRetriever;
 import as.it.ubc.ca.udetective.dataretriever.ServiceNowRetrieve;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import org.quartz.Job;
@@ -21,7 +22,11 @@ public class ServiceNowJob implements Job {
         System.out.println("Quartz: " + new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date()));
         
         IRetriever retriever = new ServiceNowRetrieve();
-        retriever.retrieve();
+        try {
+            retriever.retrieve();
+        } catch (IOException ioe) {
+            System.err.println("error");
+        }
         
     }
     

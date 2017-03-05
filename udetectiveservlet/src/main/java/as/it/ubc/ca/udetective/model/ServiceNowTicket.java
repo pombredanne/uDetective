@@ -1,52 +1,60 @@
 package as.it.ubc.ca.udetective.model;
 
-import java.sql.Date;
+import org.apache.log4j.Logger;
+import static org.apache.log4j.Logger.getLogger;
 
 public class ServiceNowTicket extends AbstractModel
 {
     private static final long serialVersionUID = 1L;
     
-    private int    id;
-    private String subject;
-    private String body;
-    private Date   date;
+    private static final Logger log = getLogger(ServiceNowTicket.class);    
     
-    public ServiceNowTicket(int id, String subject, String body, Date date) {
-        this.id      = id;
-        this.subject = subject;
-        this.body    = body;
-        this.date    = date;
+    
+    private String sys_id;
+    private String number;
+    private String short_description;
+    private String description;    
+    
+    public ServiceNowTicket(String sys_id, String number, String short_description, String description) {
+        this.sys_id      = sys_id;
+        this.number = number;
+        this.short_description = short_description;
+        this.description    = description;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setSysId(String sys_id) {
+        this.sys_id = sys_id;
     }
     
-    public int getId() {
-        return this.id;
+    public String getSysId() {
+        return this.sys_id;
     }
     
-    public void setSubject(String subject) {
-        this.subject = subject;
+    public void setNumber(String number) {
+        this.number = number;
     }
 
-    public String getSubject() {
-        return this.subject;
+    public String getNumber() {
+        return this.number;
     }
 
-    public void setBody(String body) {
-        this.body = body;
+    public void setShortDescription(String short_description) {
+        this.short_description = short_description;
     }
 
-    public String getBody() {
-        return this.body;
+    public String getShortDescription() {
+        return this.short_description;
     }
     
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDescription(String description) {
+        this.description = description;
     }
     
-    public Date getDate() {
-        return this.date;
+    public String getDescription() {
+        return this.description;
+    }
+    
+    public String toString() {
+        return (this.getSysId() + ":" + this.getNumber());
     }
 }
