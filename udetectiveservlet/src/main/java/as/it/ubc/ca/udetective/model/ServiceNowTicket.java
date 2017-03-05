@@ -1,14 +1,8 @@
 package as.it.ubc.ca.udetective.model;
 
-import org.apache.log4j.Logger;
-import static org.apache.log4j.Logger.getLogger;
-
 public class ServiceNowTicket extends AbstractModel
 {
     private static final long serialVersionUID = 1L;
-    
-    private static final Logger log = getLogger(ServiceNowTicket.class);    
-    
     
     private String sys_id;
     private String number;
