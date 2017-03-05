@@ -5,7 +5,9 @@ import as.it.ubc.ca.udetective.model.ServiceNowTicket;
 import com.google.gson.Gson;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Properties;
 import org.apache.commons.httpclient.Credentials;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpMethod;
@@ -33,9 +35,14 @@ public class ServiceNowRetrieve implements IRetriever {
     @Override
     public void retrieve() throws IOException {
                 
+        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+        InputStream input = classLoader.getResourceAsStream("udetective.properties");
+        Properties properties = new Properties();
+        properties.load(input);        
+                
         HttpClient client = new HttpClient();
         client.getParams().setAuthenticationPreemptive(false);
-        Credentials creds = new UsernamePasswordCredentials("", "");
+        Credentials creds = new UsernamePasswordCredentials(properties.getProperty("username"), properties.getProperty("password"));
         client.getState().setCredentials(AuthScope.ANY, creds);
 
         HttpMethod method = new GetMethod("https://ubcdev.service-now.com/api/now/table/incident?sysparm_query=active%3Dtrue%5Estate!%3D6%5Esys_created_onRELATIVEGE%40hour%40ago%4048%5Eassignment_group%3D81db147e2b5c79444dde23f119da153b&sysparm_display_value=true&sysparm_fields=sys_id%2Cnumber%2Cshort_description%2Cdescription&sysparm_limit=1");
