@@ -29,11 +29,11 @@ public class ServiceNowRetrieve implements IRetriever {
     
     private static final Logger log = getLogger(ServiceNowRetrieve.class);    
     
-    private IInputDS inputDS = null;
+    //private IInputDS inputDS = null;
     
-    public void serviceNowRetrieve(IInputDS inputDS) {
-        this.inputDS = inputDS;
-    }
+    //public void serviceNowRetrieve(IInputDS inputDS) {
+    //    this.inputDS = inputDS;
+    //}
     
     @Override
     public void retrieve() throws IOException {
