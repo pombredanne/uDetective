@@ -6,8 +6,8 @@ package as.it.ubc.ca.udetective.inputds;
  * @author Armenak Grigoryan
  */
 public class ServiceNowInputDS implements IInputDS {
-    @Override
-    public void connect() {
+    //@Override
+    //public void connect() {
         
-    }
+    //}
 }

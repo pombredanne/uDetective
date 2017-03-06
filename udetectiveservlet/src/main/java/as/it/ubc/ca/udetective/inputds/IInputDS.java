@@ -6,5 +6,5 @@ package as.it.ubc.ca.udetective.inputds;
  * @author Armenak Grigoryan
  */
 public interface IInputDS {
-    public void connect();
+    //public void connect();
 }
