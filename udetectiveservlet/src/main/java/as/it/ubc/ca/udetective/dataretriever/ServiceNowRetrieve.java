@@ -2,9 +2,7 @@ package as.it.ubc.ca.udetective.dataretriever;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.Properties;
 
 import org.apache.commons.httpclient.Credentials;
 import org.apache.commons.httpclient.HttpClient;
@@ -48,7 +46,7 @@ public class ServiceNowRetrieve implements IRetriever {
         // We should use an encoded query in this case because URL parameters do not support the full semantics of a filter.        
         String serviceUrl     = AppProperties.getProperty("service_url");
         String restPath       = AppProperties.getProperty("rest_path");
-        String fetchInterval  = AppProperties.getProperty("fetch_interval");   
+        //String fetchInterval  = AppProperties.getProperty("fetch_interval");   
         String resultLimit    = AppProperties.getProperty("result_limit");
         String hardCodedForTesting = "48";
         String url1           = "?sysparm_query=active%3Dtrue%5Estate!%3D6%5Esys_created_onRELATIVEGE%40hour%40ago%40" + hardCodedForTesting;

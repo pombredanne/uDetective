@@ -18,7 +18,6 @@ import static org.apache.log4j.Logger.getLogger;
 
 import as.it.ubc.ca.udetective.job.ServiceNowJob;
 import as.it.ubc.ca.udetective.utils.AppProperties;
-import java.util.Properties;
 
 /**
  * Servlet listener for Quartz
