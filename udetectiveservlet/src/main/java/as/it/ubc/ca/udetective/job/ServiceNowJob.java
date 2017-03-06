@@ -5,6 +5,8 @@ import as.it.ubc.ca.udetective.dataretriever.ServiceNowRetrieve;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import org.apache.log4j.Logger;
+import static org.apache.log4j.Logger.getLogger;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
@@ -16,6 +18,8 @@ import org.quartz.JobExecutionException;
  */
 public class ServiceNowJob implements Job {
     
+    private static final Logger log = getLogger(ServiceNowJob.class); 
+    
     @Override
     public void execute(JobExecutionContext context) throws JobExecutionException {
         
@@ -25,7 +29,7 @@ public class ServiceNowJob implements Job {
         try {
             retriever.retrieve();
         } catch (IOException ioe) {
-            System.err.println("error");
+            log.error(ioe.toString());
         }
         
     }

@@ -17,6 +17,8 @@ import org.apache.log4j.Logger;
 import static org.apache.log4j.Logger.getLogger;
 
 import as.it.ubc.ca.udetective.job.ServiceNowJob;
+import as.it.ubc.ca.udetective.utils.AppProperties;
+import java.util.Properties;
 
 /**
  * Servlet listener for Quartz
@@ -32,6 +34,10 @@ public class ServiceNowListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent servletContext) {
         log.info("Context Initialized");
 
+        log.info(AppProperties.getProperty("fetch_interval"));
+        int fetchInterval = Integer.parseInt(AppProperties.getProperty("fetch_interval"));
+        log.debug("Fetch interval =" + fetchInterval);
+        
         try {
             // Setup the Job class and the Job group
             JobDetail job = newJob(ServiceNowJob.class).withIdentity(
@@ -40,7 +46,7 @@ public class ServiceNowListener implements ServletContextListener {
             Trigger trigger = newTrigger()
                 .withIdentity("Trigger_1", "ServiveNow")
                 .withSchedule(simpleSchedule()
-                    .withIntervalInMinutes(1)
+                    .withIntervalInMinutes(fetchInterval)
                     .repeatForever()
                     .withMisfireHandlingInstructionNextWithExistingCount())
                 .build();                        
