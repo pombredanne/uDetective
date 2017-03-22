@@ -1,4 +1,4 @@
-package as.it.ubc.ca.udetective.dataretriever;
+package ca.ubc.it.as.udetective.dataretriever;
 
 import java.io.IOException;
 

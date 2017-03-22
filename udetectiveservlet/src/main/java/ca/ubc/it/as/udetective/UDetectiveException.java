@@ -2,7 +2,7 @@
  * Application level exception
  * @author Armenak Grigoryan
  */
-package as.it.ubc.ca.udetective;
+package ca.ubc.it.as.udetective;
 
 
 public class UDetectiveException extends Exception

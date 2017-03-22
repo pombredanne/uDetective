@@ -1,4 +1,4 @@
-package as.it.ubc.ca.udetective.inputds;
+package ca.ubc.it.as.udetective.inputds;
 
 /**
  * ServiceNow Input Data Source

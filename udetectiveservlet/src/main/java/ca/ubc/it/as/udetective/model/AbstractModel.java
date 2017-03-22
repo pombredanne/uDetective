@@ -1,4 +1,4 @@
-package as.it.ubc.ca.udetective.model;
+package ca.ubc.it.as.udetective.model;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package as.it.ubc.ca.udetective.utils;
+package ca.ubc.it.as.udetective.utils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

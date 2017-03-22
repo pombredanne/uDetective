@@ -29,7 +29,7 @@
         <res-auth>Container</res-auth>
     </resource-ref>
     <listener>
-        <listener-class>as.it.ubc.ca.udetective.listener.ServiceNowListener</listener-class>
+        <listener-class>ca.ubc.it.as.udetective.ServiceNowListener</listener-class>
     </listener>
     <session-config>
         <session-timeout>

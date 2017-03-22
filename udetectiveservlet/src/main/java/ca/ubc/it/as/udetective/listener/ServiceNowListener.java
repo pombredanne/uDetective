@@ -1,4 +1,4 @@
-package as.it.ubc.ca.udetective.listener;
+package ca.ubc.it.as.udetective.listener;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -16,8 +16,8 @@ import org.quartz.impl.StdSchedulerFactory;
 import org.apache.log4j.Logger;
 import static org.apache.log4j.Logger.getLogger;
 
-import as.it.ubc.ca.udetective.job.ServiceNowJob;
-import as.it.ubc.ca.udetective.utils.AppProperties;
+import ca.ubc.it.as.udetective.job.ServiceNowJob;
+import ca.ubc.it.as.udetective.utils.AppProperties;
 
 /**
  * Servlet listener for Quartz

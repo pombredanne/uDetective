@@ -1,4 +1,4 @@
-package as.it.ubc.ca.udetective.dataretriever;
+package ca.ubc.it.as.udetective.dataretriever;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,9 +16,9 @@ import static org.apache.log4j.Logger.getLogger;
 
 import com.google.gson.Gson;
 
-import as.it.ubc.ca.udetective.inputds.IInputDS;
-import as.it.ubc.ca.udetective.model.ServiceNowTicket;
-import as.it.ubc.ca.udetective.utils.AppProperties;
+import ca.ubc.it.as.udetective.inputds.IInputDS;
+import ca.ubc.it.as.udetective.model.ServiceNowTicket;
+import ca.ubc.it.as.udetective.utils.AppProperties;
 
 /**
  * Retrieves data from ServiceNow

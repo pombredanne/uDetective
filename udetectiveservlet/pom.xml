@@ -22,46 +22,6 @@
       <sonar.profile>SIS</sonar.profile>
   </properties>
 
-  <profiles>
-    <!-- RJ-specific copy profile -->
-    <profile>
-        <id>robojay</id>
-        <build>
-            <plugins>
-                <plugin>
-                    <artifactId>maven-antrun-plugin</artifactId>
-                    <version>1.7</version>
-                    <executions>
-                        <execution>
-                            <id>copy-artifact</id>
-                            <phase>package</phase>
-                            <configuration>
-                                <target>
-                                    <condition property="rj.dest" value="${autobuild.buildDir}"
-                                               else="${project.build.directory}">
-                                        <isset property="autobuild.buildDir"/>
-                                    </condition>
-                                    <condition property="rj.file" value="${autobuild.deployment.file}"
-                                               else="science2-cms.zip">
-                                        <isset property="autobuild.deployment.file"/>
-                                    </condition>
-                                    <property name="rj.build.dir" value="${project.build.directory}"/>
-                                    <property name="rj.file.path" value="${rj.dest}/${rj.file}"/>
-                                    <!--  adding the war file as nested file in zip... -->
-                                    <zip basedir="${rj.build.dir}" destfile="${rj.file.path}" includes="*.war"/>
-                                </target>
-                            </configuration>
-                            <goals>
-                                <goal>run</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-            </plugins>
-        </build>
-      </profile>
-    </profiles>
-  
     <repositories>
         <repository>
             <id>tduchateau-maven-repo</id>

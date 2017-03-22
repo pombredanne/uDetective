@@ -1,7 +1,7 @@
-package as.it.ubc.ca.udetective.job;
+package ca.ubc.it.as.udetective.job;
 
-import as.it.ubc.ca.udetective.dataretriever.IRetriever;
-import as.it.ubc.ca.udetective.dataretriever.ServiceNowRetrieve;
+import ca.ubc.it.as.udetective.dataretriever.IRetriever;
+import ca.ubc.it.as.udetective.dataretriever.ServiceNowRetrieve;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
