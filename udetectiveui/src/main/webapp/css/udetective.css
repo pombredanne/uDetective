@@ -1,0 +1,40 @@
+
+.error {color: #ff0000;}
+.successblock{color:#000;background-color:#efe;border:3px solid #080;padding:8px;margin:16px;}
+.errorblock{color:#000;background-color:#fee;border:3px solid #f00;padding:8px;margin:16px;}
+#editForm label{clear:both;float:left;width:200px;text-align:right;padding:5px 10px}
+#editForm label span{color:#f00}
+#editForm div.field{margin-left:220px}
+#editForm div.field div.error{display:block;color:#f00}
+#editForm div.field input{width:300px}
+#editForm div.field select{width:150px}
+#editForm div.buttons{clear:left;margin-left:220px;padding-top:30px}
+
+.search-results .header-row{color:#45494d;font-weight:100;border-bottom:1px solid #000;margin:10px 0px;padding:0px 4px}
+.search-results .data-row{margin-bottom:15px;margin:3px 0px;padding:10px 4px;display:block}
+
+.search-results a.data-row:link,.search-results a.data-row:visited{text-decoration:none;color:#000;background-color:#fff}
+.search-results a.data-row:active,.search-results a.data-row:hover{text-decoration:none;color:#000;background-color:#e6e6e6}
+
+.search-results .column{display:block;float:left;padding:0px 2px;width:260px}
+.search-results .gl-code,.search-results .operational-contact{}
+.search-results .udetective-id{width:35px;text-align:right}
+.search-results .udetective-name{width:300px}
+.search-results .udetective-code{width:130px}
+.search-results .auth-server-id{width:100px}
+.search-results .udetective-active{width:45px}
+.search-results .clear-row{display:block;clear:both}
+
+.udetective-menu-dropdown{width:310px;padding:20px}
+.udetective-menu-search-form{padding:0px;margin:0px}
+.udetective-menu-search-form .hint{color:#444;font-style:italic;font-size:0.9em;}
+
+.reports-menu-dropdown{width:610px;padding:20px}
+.reports-menu-search-form{padding:0px;margin:0px}
+.reports-menu-search-form .hint{color:#444;font-style:italic;font-size:0.9em;}
+
+#searchForm .hint{color:#444;font-style:italic;font-size:0.9em;margin-left:110px}
+#searchForm label{display:block;float:left;width:110px;margin-top:10px}
+#searchForm .field{display:block;float:left;width:400px;}
+#searchForm #udetectiveCode{width:220px}
+#searchForm .clear{clear:both}
