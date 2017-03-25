@@ -19,6 +19,7 @@ import com.google.gson.Gson;
 import ca.ubc.it.as.udetective.inputds.IInputDS;
 import ca.ubc.it.as.udetective.model.ServiceNowTicket;
 import ca.ubc.it.as.udetective.utils.AppProperties;
+import ca.ubc.it.as.udetective.utils.Utilities;
 
 /**
  * Retrieves data from ServiceNow
@@ -42,6 +43,8 @@ public class ServiceNowRetrieve implements IRetriever {
         client.getParams().setAuthenticationPreemptive(false);
         Credentials creds = new UsernamePasswordCredentials(AppProperties.getProperty("username"), AppProperties.getProperty("password"));
         client.getState().setCredentials(AuthScope.ANY, creds);
+        
+        log.info(AppProperties.getProperty("username"));
 
         // We should use an encoded query in this case because URL parameters do not support the full semantics of a filter.        
         String serviceUrl     = AppProperties.getProperty("service_url");
@@ -65,7 +68,6 @@ public class ServiceNowRetrieve implements IRetriever {
         String message = org.apache.commons.io.IOUtils.toString(rd);
         
         // remove leading and ending "{"
-        // message = message.substring(1, message.length()-1);
         int index = message.indexOf("\"result\":");
         message = message.substring(index+9, message.length()-1);
         log.debug(message);
@@ -81,6 +83,8 @@ public class ServiceNowRetrieve implements IRetriever {
         log.info("number of JSON objects=" + wrapper.length);
         for (int i=0; i<wrapper.length; i++) {
             log.info(wrapper[i].toString());
+            //log.info(wrapper[i].getDescription());
+            log.info("extracted IP address:" + Utilities.extractIpAddress(wrapper[i].getDescription()));
         }
     }
 }

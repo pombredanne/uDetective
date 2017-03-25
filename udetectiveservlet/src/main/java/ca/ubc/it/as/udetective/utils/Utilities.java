@@ -3,8 +3,11 @@ package ca.ubc.it.as.udetective.utils;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+import java.util.regex.Pattern;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import java.util.regex.Matcher;
 
 /**
  * Static utilities
@@ -59,5 +62,17 @@ public class Utilities {
         }
 
         return ret;
+    }
+    
+    public static String extractIpAddress(String message) {
+        String IPADDRESS_PATTERN = "(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)";
+
+        Pattern pattern = Pattern.compile(IPADDRESS_PATTERN);
+        Matcher matcher = pattern.matcher(message);
+        if (matcher.find()) {
+            return matcher.group();
+        } else{
+            return "0.0.0.0";
+        }
     }
 }
