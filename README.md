@@ -3,4 +3,4 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/c54c8bbf4a864e0bb8ecc13d7c58a8ae)](https://www.codacy.com/app/agstrider/uDetective?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=armenak/uDetective&amp;utm_campaign=Badge_Grade)
 
 # uDetective
-![High Level Architecture]( uDetective/docs/uDetective_High_Level_Architectural_Diagram.png )
+![High Level Architecture](https://github.com/armenak/uDetective/blob/master/docs/uDetective_High_Level_Architectural_Diagram.png?raw=true)
