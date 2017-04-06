@@ -20,6 +20,9 @@ import ca.ubc.it.as.udetective.inputds.IInputDS;
 import ca.ubc.it.as.udetective.model.ServiceNowTicket;
 import ca.ubc.it.as.udetective.utils.AppProperties;
 import ca.ubc.it.as.udetective.utils.Utilities;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import org.apache.commons.lang.StringUtils;
 
 /**
  * Retrieves data from ServiceNow
@@ -70,7 +73,7 @@ public class ServiceNowRetrieve implements IRetriever {
         // remove leading and ending "{"
         int index = message.indexOf("\"result\":");
         message = message.substring(index+9, message.length()-1);
-        log.debug(message);
+        //log.info(message);
         
 	Gson gson = new Gson(); 
         ServiceNowTicket[] wrapper = null;
@@ -83,9 +86,15 @@ public class ServiceNowRetrieve implements IRetriever {
         log.info("number of JSON objects=" + wrapper.length);
         for (int i=0; i<wrapper.length; i++) {
             log.info(wrapper[i].toString());
-            //log.info(wrapper[i].getDescription());
-            log.info("extracted IP address:" + Utilities.extractIpAddress(wrapper[i].getDescription()));
-            log.info("extracted date:" + Utilities.extractDate(wrapper[i].getDescription()));
+            String description = wrapper[i].getDescription();
+            // Getting IP address and date
+            log.info("Getting IP address and date");
+            String source = StringUtils.substringBetween(description, "<Source>", "</Source>");
+            log.info("Source: " + source);
+            String timeStamp = StringUtils.substringBetween(source, "<TimeStamp>", "</TimeStamp>");
+            log.info("Timestamp: " + timeStamp);
+            String ipAddress = StringUtils.substringBetween(source, "<IP_Address>", "</IP_Address>");
+            log.info("IPAddress: " + ipAddress);
         }
     }
 }
