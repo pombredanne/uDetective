@@ -85,6 +85,7 @@ public class ServiceNowRetrieve implements IRetriever {
             log.info(wrapper[i].toString());
             //log.info(wrapper[i].getDescription());
             log.info("extracted IP address:" + Utilities.extractIpAddress(wrapper[i].getDescription()));
+            log.info("extracted date:" + Utilities.extractDate(wrapper[i].getDescription()));
         }
     }
 }

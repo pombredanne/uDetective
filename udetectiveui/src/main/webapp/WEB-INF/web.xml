@@ -12,7 +12,7 @@
     <servlet>
         <description>Admin Servlet</description>
         <servlet-name>AdminServlet</servlet-name>
-        <servlet-class>ca.ubc.it.as.udetective.AdminServlet</servlet-class>
+        <servlet-class>ca.ubc.it.as.udetective.ui.AdminServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AdminServlet</servlet-name>

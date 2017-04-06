@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.LogManager;
 import static org.apache.log4j.LogManager.getLogger;
 import org.apache.log4j.Logger;
 
@@ -33,15 +32,15 @@ public class AdminServlet extends HttpServlet {
     throws ServletException, IOException {
 
         // Check if the user has administrative privileges
-        Object cwlLoginName = request.getSession().getAttribute(PARAM_CWL_LOGIN_NAME);
-        log.debug("CWL login name is " + cwlLoginName);
-        
-        AdminHelper helper = new AdminHelper(request, response, getServletContext());
-        if (helper.isAdmin(cwlLoginName.toString())) {
-            log.debug("The administrator " + cwlLoginName + " is logging in");
+//        Object cwlLoginName = request.getSession().getAttribute(PARAM_CWL_LOGIN_NAME);
+//        log.debug("CWL login name is " + cwlLoginName);
+//        
+//        AdminHelper helper = new AdminHelper(request, response, getServletContext());
+//        if (helper.isAdmin(cwlLoginName.toString())) {
+//            log.debug("The administrator " + cwlLoginName + " is logging in");
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/view/Admin.jsp");
             rd.forward(request, response);        
-        }
+//        }
     }    
     
     

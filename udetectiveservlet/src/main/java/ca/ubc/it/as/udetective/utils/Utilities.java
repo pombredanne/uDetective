@@ -1,5 +1,6 @@
 package ca.ubc.it.as.udetective.utils;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -75,4 +76,21 @@ public class Utilities {
             return "0.0.0.0";
         }
     }
+    
+    public static Date extractDate(String message) {
+        String regex = "(\\d{2}-\\d{2}-\\d{4})";
+        Matcher m = Pattern.compile(regex).matcher(message);
+        Date date = null;
+        if (m.find()) {
+            try {
+                date = new SimpleDateFormat("dd-MM-yyyy").parse(m.group(1));
+            } catch (ParseException pe) {
+                log.error(pe.toString());
+            }
+            // Use date here
+        } else {
+            // Bad input
+        }
+        return date;
+    }    
 }
