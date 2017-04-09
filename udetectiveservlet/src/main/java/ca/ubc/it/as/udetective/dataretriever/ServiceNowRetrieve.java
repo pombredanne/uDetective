@@ -16,12 +16,8 @@ import static org.apache.log4j.Logger.getLogger;
 
 import com.google.gson.Gson;
 
-import ca.ubc.it.as.udetective.inputds.IInputDS;
 import ca.ubc.it.as.udetective.model.ServiceNowTicket;
 import ca.ubc.it.as.udetective.utils.AppProperties;
-import ca.ubc.it.as.udetective.utils.Utilities;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import org.apache.commons.lang.StringUtils;
 
 /**
@@ -47,12 +43,9 @@ public class ServiceNowRetrieve implements IRetriever {
         Credentials creds = new UsernamePasswordCredentials(AppProperties.getProperty("username"), AppProperties.getProperty("password"));
         client.getState().setCredentials(AuthScope.ANY, creds);
         
-        log.info(AppProperties.getProperty("username"));
-
         // We should use an encoded query in this case because URL parameters do not support the full semantics of a filter.        
         String serviceUrl     = AppProperties.getProperty("service_url");
         String restPath       = AppProperties.getProperty("rest_path");
-        //String fetchInterval  = AppProperties.getProperty("fetch_interval");   
         String resultLimit    = AppProperties.getProperty("result_limit");
         String hardCodedForTesting = "48";
         String url1           = "?sysparm_query=active%3Dtrue%5Estate!%3D6%5Esys_created_onRELATIVEGE%40hour%40ago%40" + hardCodedForTesting;
@@ -60,9 +53,6 @@ public class ServiceNowRetrieve implements IRetriever {
         
         String finalUrl = serviceUrl + restPath + url1 + url2;
         
-        // active=true^state!=6^sys_created_onRELATIVEGE@hour@ago@48^assignment_group=81db147e2b5c79444dde23f119da153b
-        
-        // HttpMethod method = new GetMethod("https://ubcdev.service-now.com/api/now/table/incident?sysparm_query=active%3Dtrue%5Estate!%3D6%5Esys_created_onRELATIVEGE%40hour%40ago%4048%5Eassignment_group%3D81db147e2b5c79444dde23f119da153b&sysparm_display_value=true&sysparm_fields=sys_id%2Cnumber%2Cshort_description%2Cdescription&sysparm_limit=1");
         HttpMethod method = new GetMethod(finalUrl);
         method.addRequestHeader("Accept", "application/json");
         int status = client.executeMethod(method);
@@ -73,7 +63,6 @@ public class ServiceNowRetrieve implements IRetriever {
         // remove leading and ending "{"
         int index = message.indexOf("\"result\":");
         message = message.substring(index+9, message.length()-1);
-        //log.info(message);
         
 	Gson gson = new Gson(); 
         ServiceNowTicket[] wrapper = null;
@@ -87,10 +76,10 @@ public class ServiceNowRetrieve implements IRetriever {
         for (int i=0; i<wrapper.length; i++) {
             log.info(wrapper[i].toString());
             String description = wrapper[i].getDescription();
-            // Getting IP address and date
+            
+            // Fetching IP address and date
             log.info("Getting IP address and date");
             String source = StringUtils.substringBetween(description, "<Source>", "</Source>");
-            log.info("Source: " + source);
             String timeStamp = StringUtils.substringBetween(source, "<TimeStamp>", "</TimeStamp>");
             log.info("Timestamp: " + timeStamp);
             String ipAddress = StringUtils.substringBetween(source, "<IP_Address>", "</IP_Address>");
