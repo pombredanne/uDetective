@@ -1,5 +1,7 @@
 package ca.ubc.it.as.udetective.model;
 
+import java.sql.Date;
+
 public class ServiceNowTicket extends AbstractModel
 {
     private static final long serialVersionUID = 1L;
@@ -7,7 +9,9 @@ public class ServiceNowTicket extends AbstractModel
     private String sys_id;
     private String number;
     private String short_description;
-    private String description;    
+    private String description;
+    private Date   date;
+    private String ipAddress;
     
     public ServiceNowTicket(String sys_id, String number, String short_description, String description) {
         this.sys_id      = sys_id;
@@ -46,6 +50,22 @@ public class ServiceNowTicket extends AbstractModel
     
     public String getDescription() {
         return this.description;
+    }
+    
+    public void setDate(Date date) {
+        this.date = date;
+    }
+    
+    public Date getDate() {
+        return this.date;
+    }
+    
+    public void setIpAddress(String ipAddress) {
+        this.ipAddress = ipAddress;
+    }
+    
+    public String getIpAddress() {
+        return this.ipAddress;
     }
     
     @Override

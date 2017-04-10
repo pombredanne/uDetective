@@ -17,11 +17,6 @@
 -->
 <web-app metadata-complete="true" version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee                       http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
     <display-name>uDetective</display-name>
-    <description>
-     Plain web pages protected with CAS Filters
-  </description>
-    <!-- CAS Filters -->
-    <!-- SAML11 Logout -->
     <resource-ref>
         <description>uDetective database</description>
         <res-ref-name>jdbc/udetective</res-ref-name>

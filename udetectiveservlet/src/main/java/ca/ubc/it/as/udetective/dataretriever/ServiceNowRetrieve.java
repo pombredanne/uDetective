@@ -1,5 +1,7 @@
 package ca.ubc.it.as.udetective.dataretriever;
 
+import java.util.Arrays;
+import java.util.List;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -10,6 +12,7 @@ import org.apache.commons.httpclient.HttpMethod;
 import org.apache.commons.httpclient.UsernamePasswordCredentials;
 import org.apache.commons.httpclient.auth.AuthScope;
 import org.apache.commons.httpclient.methods.GetMethod;
+import org.apache.commons.lang.StringUtils;
 
 import org.apache.log4j.Logger;
 import static org.apache.log4j.Logger.getLogger;
@@ -18,7 +21,9 @@ import com.google.gson.Gson;
 
 import ca.ubc.it.as.udetective.model.ServiceNowTicket;
 import ca.ubc.it.as.udetective.utils.AppProperties;
-import org.apache.commons.lang.StringUtils;
+import ca.ubc.it.as.udetective.dao.ClaimDAO;
+import ca.ubc.it.as.udetective.service.ClaimService;
+
 
 /**
  * Retrieves data from ServiceNow
@@ -72,18 +77,35 @@ public class ServiceNowRetrieve implements IRetriever {
             log.error(e.toString());
         }
         
-        log.info("number of JSON objects=" + wrapper.length);
-        for (int i=0; i<wrapper.length; i++) {
-            log.info(wrapper[i].toString());
-            String description = wrapper[i].getDescription();
-            
+        log.info("number of fetched tickets: " + wrapper.length);
+        List<ServiceNowTicket> ticketList = Arrays.asList(wrapper);  
+        
+        for (ServiceNowTicket ticket: ticketList) {
             // Fetching IP address and date
-            log.info("Getting IP address and date");
-            String source = StringUtils.substringBetween(description, "<Source>", "</Source>");
+            log.info("Fetching IP address and date");
+            String source    = StringUtils.substringBetween(ticket.getDescription(), "<Source>", "</Source>");
             String timeStamp = StringUtils.substringBetween(source, "<TimeStamp>", "</TimeStamp>");
+            String ipAddress = StringUtils.substringBetween(source, "<IP_Address>", "</IP_Address>");            
+            
+            log.info("--------------------------");
+            log.info("Sys_Id:    " + ticket.getSysId());
+            log.info("Number:    " + ticket.getNumber());
             log.info("Timestamp: " + timeStamp);
-            String ipAddress = StringUtils.substringBetween(source, "<IP_Address>", "</IP_Address>");
-            log.info("IPAddress: " + ipAddress);
+            log.info("IPAddress: " + ipAddress);      
+            log.info("--------------------------");
+            log.info("");
+            
+            ClaimService service = new ClaimService();
+            try {
+                // fixing timestamp
+                timeStamp = timeStamp.replace("T", " ");
+                timeStamp = timeStamp.replace("Z","");
+                
+                service.addTicket(ticket.getNumber(), ticket.getDescription(), java.sql.Timestamp.valueOf(timeStamp), ipAddress);
+            } catch (Exception de) {
+                log.error(de.toString());
+                de.printStackTrace();
+            }
         }
     }
 }
