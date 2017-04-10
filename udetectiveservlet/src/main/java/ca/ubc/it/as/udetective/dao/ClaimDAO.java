@@ -3,7 +3,6 @@ package ca.ubc.it.as.udetective.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Date;
 import java.sql.Timestamp;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;

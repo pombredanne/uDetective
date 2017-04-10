@@ -21,7 +21,6 @@ import com.google.gson.Gson;
 
 import ca.ubc.it.as.udetective.model.ServiceNowTicket;
 import ca.ubc.it.as.udetective.utils.AppProperties;
-import ca.ubc.it.as.udetective.dao.ClaimDAO;
 import ca.ubc.it.as.udetective.service.ClaimService;
 
 
