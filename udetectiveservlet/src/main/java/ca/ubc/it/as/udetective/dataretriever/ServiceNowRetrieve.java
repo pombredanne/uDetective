@@ -99,6 +99,14 @@ public class ServiceNowRetrieve implements IRetriever {
             try {
                 // fixing timestamp
                 timeStamp = fixTimeStampFormat(timeStamp);
+                
+                // Sends data to ElasticSearch to find CWL
+                
+                // Sends data to CWL database to find email address, first and last name
+                
+                
+                
+                
                 // save data in the database
                 service.addTicket(ticket.getNumber(), ticket.getDescription(), java.sql.Timestamp.valueOf(timeStamp), ipAddress);
             } catch (Exception de) {
