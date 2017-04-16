@@ -1,5 +1,8 @@
 package ca.ubc.it.as.udetective.dataretriever;
 
+import ca.ubc.it.as.udetective.inputds.ElasticSearchDataSource;
+import ca.ubc.it.as.udetective.inputds.IDataSource;
+import ca.ubc.it.as.udetective.inputds.ServiceNowDataSource;
 import java.util.Arrays;
 import java.util.List;
 import java.io.BufferedReader;
@@ -43,10 +46,13 @@ public class ServiceNowRetrieve implements IRetriever {
     @Override
     public void retrieve() throws IOException {
                                 
-        HttpClient client = new HttpClient();
-        client.getParams().setAuthenticationPreemptive(false);
-        Credentials creds = new UsernamePasswordCredentials(AppProperties.getProperty("username"), AppProperties.getProperty("password"));
-        client.getState().setCredentials(AuthScope.ANY, creds);
+//        HttpClient client = new HttpClient();
+//        client.getParams().setAuthenticationPreemptive(false);
+//        Credentials creds = new UsernamePasswordCredentials(AppProperties.getProperty("username"), AppProperties.getProperty("password"));
+//        client.getState().setCredentials(AuthScope.ANY, creds);
+
+        IDataSource snDataSource = new ServiceNowDataSource();
+        HttpClient client = (HttpClient)snDataSource.connect();
         
         // We should use an encoded query in this case because URL parameters do not support the full semantics of a filter.        
         String serviceUrl     = AppProperties.getProperty("service_url");
@@ -101,6 +107,8 @@ public class ServiceNowRetrieve implements IRetriever {
                 timeStamp = fixTimeStampFormat(timeStamp);
                 
                 // Sends data to ElasticSearch to find CWL
+                IDataSource esDataSource = new ElasticSearchDataSource();
+                esDataSource.connect();
                 
                 // Sends data to CWL database to find email address, first and last name
                 
