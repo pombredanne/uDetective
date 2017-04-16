@@ -14,9 +14,9 @@ public class AdminServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
     
-    private static final String PARAM_CWL_LOGIN_NAME     = "cwlLoginName";
+    //private static final String PARAM_CWL_LOGIN_NAME     = "cwlLoginName";
     
-    private static final Logger log = getLogger(AdminServlet.class);
+    //private static final Logger log = getLogger(AdminServlet.class);
 
    /**
      * Processes requests for both HTTP

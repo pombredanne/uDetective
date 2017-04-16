@@ -22,6 +22,7 @@ import com.google.gson.Gson;
 import ca.ubc.it.as.udetective.model.ServiceNowTicket;
 import ca.ubc.it.as.udetective.utils.AppProperties;
 import ca.ubc.it.as.udetective.service.ClaimService;
+import ca.ubc.it.as.udetective.utils.Utilities;
 
 
 /**
@@ -97,14 +98,21 @@ public class ServiceNowRetrieve implements IRetriever {
             ClaimService service = new ClaimService();
             try {
                 // fixing timestamp
-                timeStamp = timeStamp.replace("T", " ");
-                timeStamp = timeStamp.replace("Z","");
-                
+                timeStamp = fixTimeStampFormat(timeStamp);
+                // save data in the database
                 service.addTicket(ticket.getNumber(), ticket.getDescription(), java.sql.Timestamp.valueOf(timeStamp), ipAddress);
             } catch (Exception de) {
                 log.error(de.toString());
-                de.printStackTrace();
             }
         }
     }
+    private String fixTimeStampFormat(String timeStamp) {
+
+        if (Utilities.isEmptyString(timeStamp)) {
+            log.error("Timestamp is NULL");
+            return null;
+        }
+
+        return timeStamp.replace("T", " ").replace("Z","");            
+    }    
 }
