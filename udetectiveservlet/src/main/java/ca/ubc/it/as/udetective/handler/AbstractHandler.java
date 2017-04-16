@@ -11,11 +11,11 @@ public abstract class AbstractHandler {
     
     private AbstractHandler handler;
 
-    AbstractHandler getHandler() {
+    public AbstractHandler getHandler() {
         return handler;
     }
     
-    void setHandler(AbstractHandler handler) {
+    public void setHandler(AbstractHandler handler) {
         this.handler = handler;
     }
     
@@ -30,6 +30,4 @@ public abstract class AbstractHandler {
             System.out.println("Unable to find the correct parser for the file: " + getHandler());
         }
     }
-    
-    
 }

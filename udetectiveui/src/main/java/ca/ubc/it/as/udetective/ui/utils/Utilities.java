@@ -58,9 +58,9 @@ public class Utilities {
         String ret = "";
         if (booleanStr == null || booleanStr.trim().equals("")) {
             ret = "";
-        } else if (booleanStr.equals("Yes")) {
+        } else if ("Yes".equals(booleanStr)) {
             ret = "Y";
-        } else if (booleanStr.equals("No")) {
+        } else if ("No".equals(booleanStr)) {
             ret = "N";
         } else {
             ret = "";
@@ -72,7 +72,7 @@ public class Utilities {
     public static boolean isEmptyString(String str) {
         boolean ret = false;
 
-        if (str == null || str.equals("")) {
+        if (str == null || "".equals(str)) {
             ret = true;
         }
 

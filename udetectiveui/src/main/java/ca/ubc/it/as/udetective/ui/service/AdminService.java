@@ -15,9 +15,6 @@ public class AdminService extends UDetectiveService {
         AdminDAO adminDAO = new AdminDAO();
         adminDAO.setDataSource(getDataSource());
         Admin admin = adminDAO.findByCwlLoginName(cwlName);
-        if (admin!= null) {
-            return true;
-        }
-        return false;
+        return admin != null;
     }
 }

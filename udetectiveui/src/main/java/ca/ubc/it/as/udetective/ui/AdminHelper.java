@@ -20,18 +20,18 @@ import org.apache.log4j.Logger;
  */
 public class AdminHelper {
 
-    final private HttpServletRequest request;
-    final private ServletContext context;
-    final private HttpServletResponse response;    
+    //final private HttpServletRequest request;
+    //final private ServletContext context;
+    //final private HttpServletResponse response;    
     
-    final private static Logger LOG = getLogger(AdminHelper.class);
+    //final private static Logger LOG = getLogger(AdminHelper.class);
     
-    private static final String PAGE_404                 = "/WEB-INF/view/404.jsp";        
+    //private static final String PAGE_404                 = "/WEB-INF/view/404.jsp";        
     
     public AdminHelper(HttpServletRequest request, HttpServletResponse response, ServletContext context) {
-        this.request = request;
-        this.context = context;
-        this.response = response;
+        //this.request = request;
+        //this.context = context;
+        //this.response = response;
     }
     
     public boolean isAdmin(String cwlName) throws ServletException, IOException {

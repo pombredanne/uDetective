@@ -13,9 +13,7 @@ import org.apache.log4j.Logger;
  */
 public abstract class UDetectiveService {
     
-    private final Logger logger = LogManager.getLogger(UDetectiveService.class);
-
-    private static final org.apache.log4j.Logger LOG = LogManager.getLogger(UDetectiveService.class);
+    private static final Logger LOG = LogManager.getLogger(UDetectiveService.class);
 
     public DataSource getDataSource() throws UDetectiveServiceException {
 
@@ -25,7 +23,7 @@ public abstract class UDetectiveService {
             Context envContext  = (Context)initContext.lookup("java:/comp/env");
             ds = (DataSource)envContext.lookup("jdbc/udetective");
             
-            logger.info("Data Source " + ds.toString() + " is successfully initialized.");
+            LOG.info("Data Source " + ds.toString() + " is successfully initialized.");
             return ds;
         } catch (NamingException ex) {
             LOG.error("Problem instantiating DataSource",ex);
