@@ -1,5 +1,6 @@
 package ca.ubc.it.as.udetective.dataretriever;
 
+import ca.ubc.it.as.udetective.model.AbstractModel;
 import java.io.IOException;
 
 /**
@@ -9,6 +10,8 @@ import java.io.IOException;
  */
 public interface IRetriever {
     
-    public void retrieve() throws IOException ;
+    public AbstractModel retrieve(AbstractModel model);
+    public void retrieve() throws IOException;
+    
             
 }

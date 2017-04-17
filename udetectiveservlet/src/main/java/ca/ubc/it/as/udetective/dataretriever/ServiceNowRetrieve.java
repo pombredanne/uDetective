@@ -3,17 +3,15 @@ package ca.ubc.it.as.udetective.dataretriever;
 import ca.ubc.it.as.udetective.inputds.ElasticSearchDataSource;
 import ca.ubc.it.as.udetective.inputds.IDataSource;
 import ca.ubc.it.as.udetective.inputds.ServiceNowDataSource;
+import ca.ubc.it.as.udetective.model.AbstractModel;
 import java.util.Arrays;
 import java.util.List;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import org.apache.commons.httpclient.Credentials;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpMethod;
-import org.apache.commons.httpclient.UsernamePasswordCredentials;
-import org.apache.commons.httpclient.auth.AuthScope;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.lang.StringUtils;
 
@@ -37,11 +35,10 @@ public class ServiceNowRetrieve implements IRetriever {
     
     private static final Logger log = getLogger(ServiceNowRetrieve.class);    
     
-    //private IInputDS inputDS = null;
-    
-    //public void serviceNowRetrieve(IInputDS inputDS) {
-    //    this.inputDS = inputDS;
-    //}
+     public AbstractModel retrieve(AbstractModel model) {
+        log.info("Not implemented");
+        return null;
+     }    
     
     @Override
     public void retrieve() throws IOException {
