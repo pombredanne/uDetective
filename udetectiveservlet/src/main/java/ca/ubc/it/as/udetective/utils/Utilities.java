@@ -16,6 +16,12 @@ public class Utilities {
     
     private static final Logger log = LogManager.getLogger(Utilities.class);
     
+    /**
+     * Checks if the date format is valid
+     * @param format
+     * @param value
+     * @return boolean
+     */
     public static boolean isValidFormat(String format, String value) {
         Date date = null;
         try {
@@ -43,16 +49,21 @@ public class Utilities {
         } catch (ParseException ex) {
             log.error(ex.toString());
         }
-        
-        log.error(d1.compareTo(d2));
-        
-        if (d1.compareTo(d2) > 0) {
+
+        if (d1 == null || d2 == null || d1.compareTo(d2) > 0) {
             log.error(date2 + " is an earlier date than " + d1);
             return false;
         }         
+        
         return true;
     }
-         
+        
+    /**
+     * Returns true if string is empty. Otherwise, returns false.
+     * 
+     * @param str
+     * @return 
+     */
     public static boolean isEmptyString(String str) {
         boolean ret = false;
 
@@ -63,6 +74,11 @@ public class Utilities {
         return ret;
     }
     
+    /**
+     * Extracts IP address from the string
+     * @param message
+     * @return String
+     */
     public static String extractIpAddress(String message) {
         String IPADDRESS_PATTERN = "(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)";
 
