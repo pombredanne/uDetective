@@ -2,6 +2,8 @@ package ca.ubc.it.as.udetective.job;
 
 import ca.ubc.it.as.udetective.dataretriever.IRetriever;
 import ca.ubc.it.as.udetective.dataretriever.ServiceNowRetrieve;
+import ca.ubc.it.as.udetective.inputds.IDataSource;
+import ca.ubc.it.as.udetective.inputds.ServiceNowDataSource;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -27,7 +29,8 @@ public class ServiceNowJob implements Job {
         
         IRetriever retriever = new ServiceNowRetrieve();
         try {
-            retriever.retrieve();
+            IDataSource snDataSource = new ServiceNowDataSource();
+            retriever.retrieve(snDataSource);
         } catch (IOException ioe) {
             log.error(ioe.toString());
         }

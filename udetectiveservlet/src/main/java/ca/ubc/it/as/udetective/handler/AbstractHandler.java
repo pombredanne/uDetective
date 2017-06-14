@@ -19,7 +19,7 @@ public abstract class AbstractHandler {
         this.handler = handler;
     }
     
-    public void setNextHandler(AbstractHandler successor){
+    public void setNextHandler(AbstractHandler successor){;
         this.setHandler(successor);
     }
    

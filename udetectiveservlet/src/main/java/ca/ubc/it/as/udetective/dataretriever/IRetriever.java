@@ -1,7 +1,9 @@
 package ca.ubc.it.as.udetective.dataretriever;
 
-import ca.ubc.it.as.udetective.model.AbstractModel;
 import java.io.IOException;
+
+import ca.ubc.it.as.udetective.inputds.IDataSource;
+import ca.ubc.it.as.udetective.model.AbstractModel;
 
 /**
  * Public interface which all data retrievers must implement
@@ -10,8 +12,6 @@ import java.io.IOException;
  */
 public interface IRetriever {
     
-    public AbstractModel retrieve(AbstractModel model);
-    public void retrieve() throws IOException;
-    
+    public void retrieve(IDataSource dataSource) throws IOException;
             
 }

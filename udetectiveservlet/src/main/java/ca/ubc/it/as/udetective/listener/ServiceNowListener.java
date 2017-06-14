@@ -29,11 +29,14 @@ public class ServiceNowListener implements ServletContextListener {
     private static final Logger log = getLogger(ServiceNowListener.class); 
     private Scheduler scheduler = null;
 
+    /**
+     * Initializes listener context
+     * @param servletContext 
+     */
     @Override
     public void contextInitialized(ServletContextEvent servletContext) {
         log.info("Context Initialized");
 
-        log.info(AppProperties.getProperty("fetch_interval"));
         int fetchInterval = Integer.parseInt(AppProperties.getProperty("fetch_interval"));
         log.debug("Fetch interval =" + fetchInterval);
         
@@ -60,6 +63,10 @@ public class ServiceNowListener implements ServletContextListener {
         }
     }
 
+    /**
+     * Destroys the listener context
+     * @param servletContext 
+     */
     @Override
     public void contextDestroyed(ServletContextEvent servletContext) {
         log.info("Context Destroyed");

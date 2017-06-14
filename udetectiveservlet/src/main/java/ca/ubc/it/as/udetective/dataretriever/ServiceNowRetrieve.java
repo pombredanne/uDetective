@@ -35,20 +35,15 @@ public class ServiceNowRetrieve implements IRetriever {
     
     private static final Logger log = getLogger(ServiceNowRetrieve.class);    
     
-     public AbstractModel retrieve(AbstractModel model) {
-        log.info("Not implemented");
-        return null;
-     }    
-    
     @Override
-    public void retrieve() throws IOException {
+    public void retrieve(IDataSource snDataSource) throws IOException {
                                 
 //        HttpClient client = new HttpClient();
 //        client.getParams().setAuthenticationPreemptive(false);
 //        Credentials creds = new UsernamePasswordCredentials(AppProperties.getProperty("username"), AppProperties.getProperty("password"));
 //        client.getState().setCredentials(AuthScope.ANY, creds);
 
-        IDataSource snDataSource = new ServiceNowDataSource();
+        //IDataSource snDataSource = new ServiceNowDataSource();
         HttpClient client = (HttpClient)snDataSource.connect();
         
         // We should use an encoded query in this case because URL parameters do not support the full semantics of a filter.        
