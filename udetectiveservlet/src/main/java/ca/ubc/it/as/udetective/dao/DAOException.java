@@ -3,7 +3,7 @@ package ca.ubc.it.as.udetective.dao;
 import ca.ubc.it.as.udetective.UDetectiveException;
 
 /**
- *
+ * Package level exception class
  * @author Armenak Grigoryan
  */
 public class DAOException extends UDetectiveException {

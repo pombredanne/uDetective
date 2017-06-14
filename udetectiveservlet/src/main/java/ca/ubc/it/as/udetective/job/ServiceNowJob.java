@@ -23,7 +23,7 @@ public class ServiceNowJob implements Job {
     @Override
     public void execute(JobExecutionContext context) throws JobExecutionException {
         
-        System.out.println("Quartz: " + new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date()));
+        log.debug("Quartz: " + new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date()));
         
         IRetriever retriever = new ServiceNowRetrieve();
         try {

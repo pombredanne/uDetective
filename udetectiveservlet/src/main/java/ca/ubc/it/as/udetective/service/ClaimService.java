@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ca.ubc.it.as.udetective.service;
 
 import java.sql.Timestamp;
@@ -14,8 +9,8 @@ import ca.ubc.it.as.udetective.dao.ClaimDAO;
 import ca.ubc.it.as.udetective.dao.DAOException;
 
 /**
- *
- * @author strider
+ * 
+ * @author Armenak Grigoryan
  */
 public class ClaimService extends AbstractService {
     private static final Logger log = LogManager.getLogger(ClaimService.class);

@@ -3,7 +3,8 @@ package ca.ubc.it.as.udetective.dao;
 import javax.sql.DataSource;
 
 /**
- * @author UBC IT
+ * Abstract DAO class 
+ * @author Armenak Grigoryan
  */
 public abstract class AbstractDAO {
     

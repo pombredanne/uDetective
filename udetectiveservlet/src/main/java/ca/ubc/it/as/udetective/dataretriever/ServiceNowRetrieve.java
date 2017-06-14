@@ -29,7 +29,7 @@ import ca.ubc.it.as.udetective.utils.Utilities;
 /**
  * Retrieves data from ServiceNow
  * 
- * @author strider
+ * @author Armenak Grigoryan
  */
 public class ServiceNowRetrieve implements IRetriever {
     

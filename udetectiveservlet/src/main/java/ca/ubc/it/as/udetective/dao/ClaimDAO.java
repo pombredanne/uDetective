@@ -19,10 +19,10 @@ public class ClaimDAO extends AbstractDAO {
     /**
      * Insert new claim into a database.
      * 
-     * @param number
-     * @param description
-     * @param date Extracted date
-     * @param ipAddress extracted IP Address
+     * @param number Extracted ticket number
+     * @param description Extracted description
+     * @param date Extracted Date
+     * @param ipAddress Extracted IP Address
      * @throws DAOException 
      */
     public void addTicket(String number, String description, Timestamp date, String ipAddress) throws DAOException {
