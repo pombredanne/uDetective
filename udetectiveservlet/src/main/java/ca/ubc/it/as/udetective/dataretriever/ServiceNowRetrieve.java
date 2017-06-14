@@ -23,6 +23,7 @@ import ca.ubc.it.as.udetective.utils.Utilities;
 
 import ca.ubc.it.as.udetective.inputds.ElasticSearchDataSource;
 import ca.ubc.it.as.udetective.inputds.IDataSource;
+import java.util.Iterator;
 
 /**
  * Retrieves data from ServiceNow
@@ -67,16 +68,19 @@ public class ServiceNowRetrieve implements IRetriever {
             log.error(e.toString());
         }
         
+        if (wrapper == null) {
+            log.error("Problem retrieving information from ServiceNow");
+            return;
+        }
         log.info("number of fetched tickets: " + wrapper.length);
         List<ServiceNowTicket> ticketList = Arrays.asList(wrapper);  
         
-        for (ServiceNowTicket ticket: ticketList) {
-            // Fetching IP address and date
+        for (Iterator<ServiceNowTicket> it = ticketList.iterator(); it.hasNext();) {
+            ServiceNowTicket ticket = it.next();
             log.info("Fetching IP address and date");
             String source    = StringUtils.substringBetween(ticket.getDescription(), "<Source>", "</Source>");
             String timeStamp = StringUtils.substringBetween(source, "<TimeStamp>", "</TimeStamp>");
-            String ipAddress = StringUtils.substringBetween(source, "<IP_Address>", "</IP_Address>");            
-            
+            String ipAddress = StringUtils.substringBetween(source, "<IP_Address>", "</IP_Address>");
             log.info("--------------------------");
             log.info("Sys_Id:    " + ticket.getSysId());
             log.info("Number:    " + ticket.getNumber());
@@ -84,7 +88,6 @@ public class ServiceNowRetrieve implements IRetriever {
             log.info("IPAddress: " + ipAddress);      
             log.info("--------------------------");
             log.info("");
-            
             ClaimService service = new ClaimService();
             try {
                 // fixing timestamp

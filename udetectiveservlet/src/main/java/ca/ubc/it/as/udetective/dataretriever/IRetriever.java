@@ -3,7 +3,6 @@ package ca.ubc.it.as.udetective.dataretriever;
 import java.io.IOException;
 
 import ca.ubc.it.as.udetective.inputds.IDataSource;
-import ca.ubc.it.as.udetective.model.AbstractModel;
 
 /**
  * Public interface which all data retrievers must implement
