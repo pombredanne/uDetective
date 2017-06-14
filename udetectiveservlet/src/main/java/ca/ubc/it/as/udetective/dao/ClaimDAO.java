@@ -17,14 +17,10 @@ public class ClaimDAO extends AbstractDAO {
     private final Logger logger = LogManager.getLogger(ClaimDAO.class);
 
     /**
-     * Adds new claim.
+     * Insert new claim into a database.
      * 
-     * Generates a unique UBC ID by calling ADMISS.AD_ADM_ID_SEQ_PROC, then
-     * proceeds to insert relevant records in NARC_PERSONT, NARC_PROSPECT_IDT,
-     * CBM_TXN_SRCE_TYPE and CBM_MERCHANT.  The next merchant ID is set on the
-     * passed merchant object.
-     * 
-     * @param ticket The ticket to insert
+     * @param number
+     * @param description
      * @param date Extracted date
      * @param ipAddress extracted IP Address
      * @throws DAOException 
@@ -52,6 +48,5 @@ public class ClaimDAO extends AbstractDAO {
             logger.error(sqle.toString());
             throw new DAOException(sqle);
         }        
-    }    
-    
+    }
 }
