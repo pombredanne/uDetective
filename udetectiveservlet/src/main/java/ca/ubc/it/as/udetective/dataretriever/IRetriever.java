@@ -11,6 +11,6 @@ import ca.ubc.it.as.udetective.inputds.IDataSource;
  */
 public interface IRetriever {
     
-    public void retrieve(IDataSource dataSource) throws IOException;
+    public Object retrieve(IDataSource dataSource, Object object) throws RetrieverException;
             
 }

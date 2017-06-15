@@ -30,12 +30,12 @@ import java.util.Iterator;
  * 
  * @author Armenak Grigoryan
  */
-public class ServiceNowRetrieve implements IRetriever {
+public class ServiceNowRetriever implements IRetriever {
     
-    private static final Logger log = getLogger(ServiceNowRetrieve.class);    
+    private static final Logger log = getLogger(ServiceNowRetriever.class);    
     
     @Override
-    public void retrieve(IDataSource snDataSource) throws IOException {
+    public Object retrieve(IDataSource snDataSource, Object object) throws RetrieverException {
                                 
         HttpClient client = (HttpClient)snDataSource.connect();
         
@@ -51,10 +51,15 @@ public class ServiceNowRetrieve implements IRetriever {
         
         HttpMethod method = new GetMethod(finalUrl);
         method.addRequestHeader("Accept", "application/json");
-        int status = client.executeMethod(method);
-        log.info("Status:" + status);
-        BufferedReader rd = new BufferedReader(new InputStreamReader(method.getResponseBodyAsStream()));     
-        String message = org.apache.commons.io.IOUtils.toString(rd);
+        String message = "";
+        try {
+            int status = client.executeMethod(method);
+            log.info("Status:" + status);
+            BufferedReader rd = new BufferedReader(new InputStreamReader(method.getResponseBodyAsStream()));     
+            message = org.apache.commons.io.IOUtils.toString(rd);
+        } catch (IOException ioe) {
+            throw new RetrieverException(ioe.toString());
+        }
         
         // remove leading and ending "{"
         int index = message.indexOf("\"result\":");
@@ -70,7 +75,7 @@ public class ServiceNowRetrieve implements IRetriever {
         
         if (wrapper == null) {
             log.error("Problem retrieving information from ServiceNow");
-            return;
+            return null;
         }
         log.info("number of fetched tickets: " + wrapper.length);
         List<ServiceNowTicket> ticketList = Arrays.asList(wrapper);  
@@ -108,6 +113,7 @@ public class ServiceNowRetrieve implements IRetriever {
                 log.error(de.toString());
             }
         }
+        return null;
     }
     private String fixTimeStampFormat(String timeStamp) {
 

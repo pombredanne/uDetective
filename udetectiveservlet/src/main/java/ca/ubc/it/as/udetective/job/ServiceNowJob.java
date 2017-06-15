@@ -1,7 +1,9 @@
 package ca.ubc.it.as.udetective.job;
 
 import ca.ubc.it.as.udetective.dataretriever.IRetriever;
-import ca.ubc.it.as.udetective.dataretriever.ServiceNowRetrieve;
+import ca.ubc.it.as.udetective.dataretriever.Pipeline;
+import ca.ubc.it.as.udetective.dataretriever.RetrieverException;
+import ca.ubc.it.as.udetective.dataretriever.ServiceNowRetriever;
 import ca.ubc.it.as.udetective.inputds.IDataSource;
 import ca.ubc.it.as.udetective.inputds.ServiceNowDataSource;
 import java.io.IOException;
@@ -24,17 +26,12 @@ public class ServiceNowJob implements Job {
     
     @Override
     public void execute(JobExecutionContext context) throws JobExecutionException {
-        
         log.debug("Quartz: " + new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date()));
-        
-        IRetriever retriever = new ServiceNowRetrieve();
+        Pipeline pipeline = new Pipeline();
         try {
-            IDataSource snDataSource = new ServiceNowDataSource();
-            retriever.retrieve(snDataSource);
-        } catch (IOException ioe) {
-            log.error(ioe.toString());
+            pipeline.execute();
+        } catch (RetrieverException re) {
+            throw new JobExecutionException(re.toString());
         }
-        
     }
-    
 }
