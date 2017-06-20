@@ -5,6 +5,7 @@ import java.util.List;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Iterator;
 
 import org.apache.log4j.Logger;
 import static org.apache.log4j.Logger.getLogger;
@@ -18,12 +19,10 @@ import org.apache.commons.lang.StringUtils;
 
 import ca.ubc.it.as.udetective.model.ServiceNowTicket;
 import ca.ubc.it.as.udetective.utils.AppProperties;
-import ca.ubc.it.as.udetective.service.ClaimService;
 import ca.ubc.it.as.udetective.utils.Utilities;
-
 import ca.ubc.it.as.udetective.inputds.ElasticSearchDataSource;
 import ca.ubc.it.as.udetective.inputds.IDataSource;
-import java.util.Iterator;
+import ca.ubc.it.as.udetective.service.ClaimService;
 
 /**
  * Retrieves data from ServiceNow
